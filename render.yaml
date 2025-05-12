@@ -1,9 +1,12 @@
-services:
-  - type: web
-    name: stock-advisor
-    env: python
-    buildCommand: ""
-    startCommand: gunicorn core.wsgi:application
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: core.settings
+services:  
+  - type:  web
+    name:  stock-advisor
+    env:  python
+    buildCommand:  "pip install -r requirements.txt"
+    startCommand:  "gunicorn core.wsgi:application --bind 0.0.0.0:10000"
+    envVars:  
+      - key:  DJANGO_SETTINGS_MODULE
+        value:  core.settings
+    plan:  free
+    region:  oregon 
+  
